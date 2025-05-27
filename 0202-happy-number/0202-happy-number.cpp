@@ -1,19 +1,23 @@
 class Solution {
 public:
     bool isHappy(int n) {
-        int sum = 0;
-        while(n > 0){
-            int rem = n % 10;
-            sum += rem * rem;
-            n = n / 10;
+        unordered_set<int> usedInteger;
+        while(true){
+            int sum=0;
+            while(n!=0){
+                int digit=n%10;
+                sum+=pow(digit,2);
+                n=n/10;
+            }
+            if(sum==1){
+                return true;
+            }
+            if(usedInteger.count(sum)){
+                return false;
+            }
+            usedInteger.insert(sum);
+            n=sum;
         }
-
-        if(sum == 1) {
-            return true;
-        } else if(sum == 4) {
-            return false;
-        } else {
-            return isHappy(sum);
-        }
+        
     }
 };
