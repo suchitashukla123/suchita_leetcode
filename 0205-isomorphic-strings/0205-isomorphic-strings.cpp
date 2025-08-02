@@ -1,25 +1,27 @@
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
-        if (s.size() != t.size()) return false;
+        if (s.length() != t.length()) return false;
 
-        unordered_map<char, char> mpp;
-        unordered_map<char, char> reverse_mpp;
+        unordered_map<char, char> s_to_t;
+        unordered_map<char, char> t_to_s;
 
-        for (int i = 0; i < s.size(); i++) {
+        for (int i = 0; i < s.length(); ++i) {
             char c1 = s[i];
             char c2 = t[i];
 
-            // Check if there's already a mapping
-            if (mpp.count(c1)) {
-                if (mpp[c1] != c2) return false;
+            // Check mapping from s to t
+            if (s_to_t.count(c1)) {
+                if (s_to_t[c1] != c2) return false;
             } else {
-                // Check reverse mapping to ensure one-to-one mapping
-                if (reverse_mpp.count(c2)) {
-                    if (reverse_mpp[c2] != c1) return false;
-                }
-                mpp[c1] = c2;
-                reverse_mpp[c2] = c1;
+                s_to_t[c1] = c2;
+            }
+
+            // Check mapping from t to s
+            if (t_to_s.count(c2)) {
+                if (t_to_s[c2] != c1) return false;
+            } else {
+                t_to_s[c2] = c1;
             }
         }
 
