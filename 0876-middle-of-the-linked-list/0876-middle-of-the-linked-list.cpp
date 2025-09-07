@@ -13,7 +13,7 @@ public:
     ListNode* middleNode(ListNode* head) {
         if (head == NULL || head->next == NULL) return head;
 
-        // Step 1: Count nodes
+        
         int count = 0;
         ListNode* temp = head;
         while (temp != NULL) {
@@ -21,10 +21,10 @@ public:
             temp = temp->next;
         }
 
-        // Step 2: Find middle index
+        
         int mid = count / 2;
 
-        // Step 3: Move to middle
+       
         temp = head;
         for (int i = 0; i < mid; i++) {
             temp = temp->next;
