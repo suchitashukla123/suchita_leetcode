@@ -12,7 +12,7 @@ class Solution {
 public:
     ListNode* mergeNodes(ListNode* head) {
         ListNode* dummy = new ListNode(0);
-        ListNode* tail = dummy;   // to keep track of the last node in new list
+        ListNode* tail = dummy;   
         ListNode* p = head;
         int count = 0;
 
@@ -20,7 +20,7 @@ public:
             if (p->val != 0) {
                 count += p->val;
             } else {
-                if (count > 0) {   // avoid first zero
+                if (count > 0) {   
                     tail->next = new ListNode(count);
                     tail = tail->next;
                     count = 0;
