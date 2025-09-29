@@ -29,7 +29,7 @@ public:
             curr->right = new TreeNode(v);
             curr = curr->right;
         }
-
+        
         return dummy->right;
         
     }
