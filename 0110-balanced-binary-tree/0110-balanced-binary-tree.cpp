@@ -11,20 +11,17 @@
  */
 class Solution {
 public:
-    int height(TreeNode* root) {
-        if (!root) return 0;
-        return 1 + max(height(root->left), height(root->right));
-    }
-
     bool isBalanced(TreeNode* root) {
-        if (!root) return true;
+        return (dfsheight(root)!=-1);
+    }
+    int dfsheight(TreeNode* root){
+        if(root==NULL) return 0;
 
-        int leftHeight = height(root->left);
-        int rightHeight = height(root->right);
-
-        if (abs(leftHeight - rightHeight) > 1)
-            return false;
-
-        return isBalanced(root->left) && isBalanced(root->right);
+        int lh = dfsheight(root->left);
+        if(lh==-1) return -1;
+        int rh = dfsheight(root->right);
+        if(rh==-1) return -1;
+        if(abs(lh-rh)>1) return -1;
+        return max(lh,rh)+1;
     }
 };
