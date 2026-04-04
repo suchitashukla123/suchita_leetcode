@@ -6,7 +6,8 @@ public:
     }
 
     vector<int> solve(string expr, unordered_map<string, vector<int>>& memo) {
-        if (memo.count(expr)) return memo[expr];
+        if (memo.count(expr))
+            return memo[expr];
 
         vector<int> result;
 
@@ -19,9 +20,12 @@ public:
 
                 for (int l : left) {
                     for (int r : right) {
-                        if (op == '+') result.push_back(l + r);
-                        else if (op == '-') result.push_back(l - r);
-                        else if (op == '*') result.push_back(l * r);
+                        if (op == '+')
+                            result.push_back(l + r);
+                        else if (op == '-')
+                            result.push_back(l - r);
+                        else if (op == '*')
+                            result.push_back(l * r);
                     }
                 }
             }
@@ -35,4 +39,3 @@ public:
         return memo[expr] = result;
     }
 };
-
