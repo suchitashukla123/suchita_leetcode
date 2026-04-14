@@ -16,7 +16,7 @@ public:
             if (v.size() < 3) continue;
 
             for (int i = 0; i + 2 < v.size(); i++) {
-                int dist = 2 * (v[i + 2] - v[i]);  // 🔥 FIX
+                int dist = 2 * (v[i + 2] - v[i]);  
                 ans = min(ans, dist);
             }
         }
